@@ -1,0 +1,108 @@
+{% extends "/shared/layout.html" %}
+
+
+{% block content %}
+{% include "/shared/navbar.html" %}
+<h1 class="display-1 my-5">Create Employee</h1>
+
+<div class="card shadow">
+    <div class="card-body">
+        <form action="/employees/create" method="post">
+            {{ form.csrf_token }}
+            {{ form.user_id }}
+            <div class="mb-3">
+                {{ form.first_name.label(class="form-label") }}
+                {{ form.first_name(class="form-control")}}
+                {% if form.first_name.errors %}
+                    {% for error in form.first_name.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.last_name.label(class="form-label") }}
+                {{ form.last_name(class="form-control")}}
+                {% if form.last_name.errors %}
+                    {% for error in form.last_name.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.job_title.label(class="form-label") }}
+                {{ form.job_title(class="form-control")}}
+                {% if form.job_title.errors %}
+                    {% for error in form.job_title.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.address.label(class="form-label") }}
+                {{ form.address(class="form-control")}}
+                {% if form.address.errors %}
+                    {% for error in form.address.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.phone.label(class="form-label") }}
+                {{ form.phone(class="form-control")}}
+                {% if form.phone.errors %}
+                    {% for error in form.phone.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.experience.label(class="form-label") }}
+                {{ form.experience(class="form-control")}}
+                {% if form.experience.errors %}
+                    {% for error in form.experience.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control")}}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.pay_rate.label(class="form-label") }}
+                {{ form.pay_rate(class="form-control")}}
+                {% if form.pay_rate.errors %}
+                    {% for error in form.pay_rate.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Create Employee</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

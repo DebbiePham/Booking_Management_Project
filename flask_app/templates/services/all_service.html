@@ -1,0 +1,27 @@
+{% extends "/shared/layout.html" %}
+{% block content %}
+{% include "/shared/navbar.html" %}
+<div class="container mb-5 d-flex">
+    <div>
+        <h4 class="display-1 my-5">Services</h4>
+        <div>
+            <form action="/services/create">
+                <button type="submit" class="btn btn-primary">Add New Service</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    {% for service in services %}
+    <div class="card shadow mb-5">
+        <div class="card-body">
+            <h5><a href="/services/{{ service.id }}">{{ service.name }}</a></h5>
+            <p>{{ service.description }}</p>
+            <p>{{ service.price }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

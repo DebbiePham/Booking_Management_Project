@@ -1,0 +1,64 @@
+{% extends "/shared/layout.html" %}
+
+
+{% block content %}
+{% include "/shared/navbar.html" %}
+<h1 class="display-1 my-5">Edit Payment</h1>
+
+<div class="card shadow">
+    <div class="card-body">
+        <form action="/payments/{{ payment.id }}/process" method="post">
+            {{ form.csrf_token }}
+            {{ form.customer_id }}
+            <div class="mb-3">
+                {{ form.name_on_card.label(class="form-label") }}
+                {{ form.name_on_card(class="form-control")}}
+                {% if form.name_on_card.errors %}
+                    {% for error in form.name_on_card.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.card_number.label(class="form-label") }}
+                {{ form.card_number(class="form-control")}}
+                {% if form.card_number.errors %}
+                    {% for error in form.card_number.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.csv.label(class="form-label") }}
+                {{ form.csv(class="form-control")}}
+                {% if form.csv.errors %}
+                    {% for error in form.csv.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.zip_code.label(class="form-label") }}
+                {{ form.zip_code(class="form-control")}}
+                {% if form.zip_code.errors %}
+                    {% for error in form.zip_code.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

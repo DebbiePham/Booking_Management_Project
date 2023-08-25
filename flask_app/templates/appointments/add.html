@@ -1,0 +1,90 @@
+{% extends "/shared/layout.html" %}
+{% block title %}Add Appointment{% endblock title %}
+
+{% block content %}
+{% include "/shared/navbar.html" %}
+<div class="container">
+    <form action="/create" method="post">
+        {{ form.csrf_token }}
+        {{ form.employee_id }}
+        {{ form.service_id }}
+        {{ form.customer_id }}
+        <!-- Customer Name input -->
+        <div class="form-outline mb-4">
+            {{ form.customer_name.label(class="form-label") }}
+            {{ form.customer_name(class="form-control") }}
+            {% if form.customer_name.errors %}
+                {% for error in form.customer_name.errors  %}
+                    <span class="form-text text-danger">
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <!-- service_name input -->
+        <div class="form-outline mb-4">
+            {{ form.service_name.label(class="form-label") }}
+            {{ form.service_name(class="form-control") }}
+            {% if form.service_name.errors %}
+                {% for error in form.service_name.errors  %}
+                    <span class="form-text text-danger">
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <!-- duration input -->
+        <div class="form-outline mb-4">
+            {{ form.duration.label(class="form-label") }}
+            {{ form.duration(class="form-control") }}
+            {% if form.duration.errors %}
+                {% for error in form.duration.errors  %}
+                    <span class="form-text text-danger">
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <!-- employee_name input -->
+        <div class="form-outline mb-4">
+            {{ form.employee_name.label(class="form-label") }}
+            {{ form.employee_name(class="form-control") }}
+            {% if form.employee_name.errors %}
+                {% for error in form.employee_name.errors  %}
+                    <span class="form-text text-danger">
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-outline mb-4">
+            {{ form.date.label(class="form-label") }}
+            {{ form.date(class="form-control") }}
+            {% if form.date.errors %}
+                {% for error in form.date.errors  %}
+                    <span class="form-text text-danger">
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-outline mb-4">
+            {{ form.start_time.label(class="form-label") }}
+            {{ form.start_time(class="form-control") }}
+            {% if form.start_time.errors %}
+                {% for error in form.start_time.errors  %}
+                    <span class="form-text text-danger">
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-3">Create Appoinment </button>
+    </form>
+</div>
+
+
+{% endblock content %}

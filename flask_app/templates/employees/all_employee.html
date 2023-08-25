@@ -1,0 +1,31 @@
+{% extends "/shared/layout.html" %}
+{% block content %}
+{% include "/shared/navbar.html" %}
+<div class="container mb-5 d-flex">
+    <div>
+        <h4 class="display-1 my-5">Hairs Designers</h4>
+        <div>
+            <form action="/employees/create">
+                <button type="submit" class="btn btn-primary">Add New Employee</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    {% for employee in employees %}
+    <div class="card shadow mb-5">
+        <div class="card-body">
+            <p><a href="/employees/{{ employee.id }}">{{ employee.first_name }} {{ employee.last_name }}</a></p>
+            <p>{{ employee.job_title }}</p>
+            <p>{{ employee.experience }}</p>
+        
+            <form action="/booking">
+                <button type="submit" class="btn btn-primary">Book Now</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

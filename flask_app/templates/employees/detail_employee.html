@@ -1,0 +1,24 @@
+{% extends "/shared/layout.html" %}
+
+
+{% block content %}
+{% include "/shared/navbar.html" %}
+<div class="container mt-5">
+    <div class="card shadow mb-5">
+        <div class="card-body">
+            <p>First Name: {{ employee.first_name }}</p>
+            <p>Last Name: {{ employee.last_name }}</p>
+            <p>Job Title: {{ employee.job_title }}</p>
+            <p>Address: {{ employee.address }}</p>
+            <p>Phone: {{ employee.phone }}</p>
+            <p>Experience: {{ employee.experience }}</p>
+            <p>Email: {{ employee.email }}</p>
+            <p>Pay Rate: {{ employee.pay_rate }}</p>
+            <form action="/employees/edit">
+                <button type="submit" class="btn btn-primary">Edit Profile</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

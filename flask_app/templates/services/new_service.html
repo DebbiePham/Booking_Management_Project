@@ -1,0 +1,53 @@
+{% extends "/shared/layout.html" %}
+
+
+{% block content %}
+{% include "/shared/navbar.html" %}
+<h1 class="display-1 my-5">Create New Service</h1>
+
+<div class="card shadow">
+    <div class="card-body">
+        <form action="/services/create" method="post">
+            {{ form.csrf_token }}
+            {{ form.user_id }}
+            <div class="mb-3">
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-control")}}
+                {% if form.name.errors %}
+                    {% for error in form.name.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.description.label(class="form-label") }}
+                {{ form.description(class="form-control")}}
+                {% if form.description.errors %}
+                    {% for error in form.description.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.price.label(class="form-label") }}
+                {{ form.price(class="form-control")}}
+                {% if form.price.errors %}
+                    {% for error in form.price.errors  %}
+                        <span class="form-text text-danger">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Add Service</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
