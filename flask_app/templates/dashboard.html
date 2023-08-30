@@ -4,7 +4,13 @@
 {% block content %}
 {% include "/shared/navbar.html" %}    
     <div class="container my-3">
-        <div id="calendar"></div>
+        <div id="calendar">
+            {% for appointment in appointments %}
+                {{ appointment.customer_name }}
+                {{ appointment.service_name }}
+                {{ appointment.start_time }}
+            {% endfor %}
+        </div>
     </div>
     <form action="/add">
         <button type="submit" class="btn btn-primary">Add</button>
@@ -13,17 +19,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                appointments: [
-                {% for appointment in appointments %}
-                {
-                    customer_name : '{{ appointment.customer_name }}',
-                    service_name : '{{ appointment.service_name }}',
-                    start_time : '{{ appointment.start_time }}',
-                },
-                {% endfor %}
-                ],
-            });
+                initialView: 'dayGridMonth',});
             calendar.render();
         });
     </script>

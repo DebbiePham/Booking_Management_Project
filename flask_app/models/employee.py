@@ -1,6 +1,7 @@
 from flask_app.extensions import db
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
+from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.sql import func
 
 class Employee(db.Model):

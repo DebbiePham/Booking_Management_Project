@@ -51,16 +51,20 @@ def add_appointment():
 @bp.route("/create", methods=['GET', 'POST'])
 def create_appointment():
 
+    """do stuff"""
+    
     form = AppointmentForm(user_id=current_user.id)
 
     if form.validate_on_submit():
-        """do stuff"""
         customer_name = request.form.get("customer_name")
         service_name = request.form.get("service_name")
         duration = request.form.get("duration")
         employee_name = request.form.get("employee_name")
         date = request.form.get("date")
         start_time = request.form.get("start_time")
+        customer_id = request.form.get("customer_id")
+        service_id = request.form.get("service_id")
+        employee_id = request.form.get("employee_id")
 
         new_appointment = Appointment(
             customer_name=customer_name,
@@ -68,7 +72,10 @@ def create_appointment():
             duration=duration,
             employee_name=employee_name,
             date=date,
-            start_time=start_time
+            start_time=start_time,
+            customer_id=customer_id,
+            service_id=service_id,
+            employee_id=employee_id
         )
 
         db.session.add(new_appointment)
